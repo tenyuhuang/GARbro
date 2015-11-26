@@ -364,8 +364,7 @@ namespace GARbro.GUI
 
         static void ExtractAudio (ArcFile arc, Entry entry)
         {
-            using (var file = arc.OpenEntry (entry))
-            using (var sound = AudioFormat.Read (file))
+            using (var sound = arc.LoadAudio (entry))
             {
                 if (null == sound)
                     throw new InvalidFormatException (string.Format ("{1}: {0}", guiStrings.MsgUnableInterpretAudio, entry.Name));

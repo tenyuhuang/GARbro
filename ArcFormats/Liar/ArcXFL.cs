@@ -150,8 +150,10 @@ namespace GameRes.Formats.Liar
         }
     }
 
-    public class LwgImageEntry : ImageEntry
+    public class LwgImageEntry : Entry
     {
+        public override string Type { get { return "image"; } }
+
         public int PosX;
         public int PosY;
         public int BPP;

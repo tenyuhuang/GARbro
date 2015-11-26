@@ -41,7 +41,7 @@ namespace GameRes
         public string FileName { get; set; }
     }
 
-    public class ImageEntry : Entry
+    public abstract class ImageEntry : VirtualEntry
     {
         public override string Type { get { return "image"; } }
     }

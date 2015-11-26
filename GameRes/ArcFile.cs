@@ -189,6 +189,22 @@ namespace GameRes
             }
         }
 
+        /// <summary>
+        /// Open specified entry and try to load it as an image file.
+        /// </summary>
+        public ImageData LoadImage (Entry entry)
+        {
+            return entry.LoadImage (this);
+        }
+
+        /// <summary>
+        /// Open specified entry and try to load it as an audio file.
+        /// </summary>
+        public SoundInput LoadAudio (Entry entry)
+        {
+            return entry.LoadAudio (this);
+        }
+
         public ArchiveFileSystem CreateFileSystem ()
         {
             if (m_interface.IsHierarchic)

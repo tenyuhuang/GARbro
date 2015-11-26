@@ -53,12 +53,36 @@ namespace GameRes
         {
             return Offset < max_offset && Size <= max_offset && Offset <= max_offset - Size;
         }
+
+        /// <summary>
+        /// Try to open entry as an image file.
+        /// Returns null if entry isn't recognized as known image format.
+        /// </summary>
+        public virtual ImageData LoadImage (ArcFile source)
+        {
+            using (var input = source.OpenSeekableEntry (this))
+                return ImageFormat.Read (Name, input);
+        }
+
+        /// <summary>
+        /// Try to open entry as an audio file.
+        /// Returns null if entry isn't recognized as known audio format.
+        /// </summary>
+        public virtual SoundInput LoadAudio (ArcFile source)
+        {
+            using (var input = source.OpenEntry (this))
+                return AudioFormat.Read (input);
+        }
     }
 
     public class PackedEntry : Entry
     {
         public uint UnpackedSize { get; set; }
         public bool IsPacked     { get; set; }
+    }
+
+    public class VirtualEntry : Entry
+    {
     }
 
     public abstract class IResource

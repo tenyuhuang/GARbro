@@ -174,4 +174,9 @@ namespace GameRes
 
         static readonly Lazy<AudioFormat> s_WavFormat = new Lazy<AudioFormat> (() => FormatCatalog.Instance.AudioFormats.FirstOrDefault (x => x.Tag == "WAV"));
     }
+
+    public abstract class AudioEntry : VirtualEntry
+    {
+        public override string Type { get { return "audio"; } }
+    }
 }
